@@ -25,7 +25,7 @@ public class Pedido implements Serializable {
         this.fechaInicioMaker = null;
         this.fechaFinalizacionMaker = null;
         this.metodoPago = metodoPago;
-        this.fursuits = new ArrayList<Fursuit>();
+        this.fursuits = fursuits;
     }
 
     public int getId() {
