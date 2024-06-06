@@ -307,6 +307,11 @@ public class FursuitMain {
                 System.out.println(" [ Métodos de pago: " + makers.get(i).getMetodoPagos() + " ]");
                 System.out.println(" [ Precio por head: " + makers.get(i).getPrecioHead() + " EUR ]");
                 System.out.println(" [ Precio por suit: " + makers.get(i).getPrecioSuit() + " EUR ]");
+                if (makers.get(i).getPedido() != null) {
+                    System.out.println(" [ Pedido asignado: ID Nº" + makers.get(i).getPedido().getId() + " - Nombre de cliente: " + makers.get(i).getPedido().getNombreCliente() + " ]");
+                } else {
+                    System.out.println(" [ Pedido asignado: Ninguno ]");
+                }
             }
             System.out.println("\n--------------------------------------------------\n");
         } else {
@@ -417,7 +422,11 @@ public class FursuitMain {
                 }
             }
 
-            if (makerDisponible || cantidadPedidosAsignados < pedidos.size()) {
+            if (!makerDisponible) {
+                System.out.println("No hay ningún maker con pedidos disponibles.");
+            } else if (cantidadPedidosAsignados >= pedidos.size()) {
+                System.out.println("No hay ningún pedido disponible para ser asignado.");
+            } else {
                 HashMap<Integer, Integer> posicionesPedido = new HashMap<Integer, Integer>();
                 int posicionPedido = 1;
 
@@ -439,7 +448,7 @@ public class FursuitMain {
                     System.out.println("Elija uno de los siguientes makers para asignar:");
                     System.out.println(" 0. Salir");
                     for (int i = 0; i < makers.size(); i++) {
-                        if (makers.get(i).getPedido() == null || makers.get(i).getMetodoPagos().contains(pedidos.get(posicionesPedido.get(seleccionPedido)).getMetodoPago())) {
+                        if (makers.get(i).getPedido() == null && makers.get(i).getMetodoPagos().contains(pedidos.get(posicionesPedido.get(seleccionPedido)).getMetodoPago())) {
                             System.out.println(" " + posicionMaker + ". " + makers.get(i).getNombre() + " [ Trabajo diario: " + makers.get(i).getMinutosTrabajoDiario() + " min ]");
                             posicionesMaker.put(posicionMaker, i);
                             posicionMaker++;
@@ -476,8 +485,6 @@ public class FursuitMain {
                         System.out.println("\n Pedido asignado con éxito.");
                     }
                 }
-            } else {
-                System.out.println("No hay ningún maker con pedidos disponibles.");
             }
         }
     }
@@ -501,9 +508,9 @@ public class FursuitMain {
             } else {
                 System.out.println("¿Qué pedido deseas modificar?");
                 System.out.println(" 0. Salir");
-                for (int i = 0; i < posicionesPedido.size(); i++) {
+                for (int i = 1; i <= posicionesPedido.size(); i++) {
                     System.out.println(
-                        " " + (i + 1) + ". ID Nº" + pedidos.get(posicionesPedido.get(i)).getId() 
+                        " " + i + ". ID Nº" + pedidos.get(posicionesPedido.get(i)).getId() 
                         + " [ Nombre cliente: " + pedidos.get(posicionesPedido.get(i)).getNombreCliente() 
                         + " - Estado del pedido: " + pedidos.get(posicionesPedido.get(i)).getEstadoPedido() +  " ]"
                     );
@@ -511,7 +518,7 @@ public class FursuitMain {
                 
                 int seleccionPedido = seleccionInt(0, posicionesPedido.size());
                 if (seleccionPedido > 0) {
-                    int indiceSeleccionPedido = seleccionPedido - 1;
+                    int indiceSeleccionPedido = seleccionPedido;
 
                     if (pedidos.get(posicionesPedido.get(indiceSeleccionPedido)).getEstadoPedido() == "No empezado") {
                         pedidos.get(posicionesPedido.get(indiceSeleccionPedido)).setFechaInicioMaker(LocalDate.now());
@@ -557,10 +564,10 @@ public class FursuitMain {
 
         System.out.println("\nIntroduzca los datos del pedido:");
 
-        System.out.println("\n Nombre:");
+        System.out.println("\n Nombre del cliente:");
         String nombre = seleccionString(0);
 
-        System.out.println("\n Dirección:");
+        System.out.println("\n Dirección del cliente:");
         String direccion = seleccionString(0);
 
         System.out.println("\n Método de pago:");
