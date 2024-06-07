@@ -10,9 +10,9 @@ Con las distintas opciones disponibles puedes hacer lo siguiente:
 
 1. Crear una cuenta de maker (trabajador).
 
-2. Eliminar una cuenta de maker. Te saldrá distinta información sobre cada maker para poder distinguirlos mejor al momento de eliminarlos.
+2. Revisar todas las cuentas de maker.
 
-3. Revisar todas las cuentas de maker.
+3. Eliminar una cuenta de maker. Te saldrá distinta información sobre cada maker para poder distinguirlos mejor al momento de eliminarlos.
 
 4. Revisar todos los pedidos.
 

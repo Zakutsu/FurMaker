@@ -20,7 +20,7 @@ public class FursuitMain {
         int eleccion;
 
         do {
-            System.out.println("\nBienvenido a FurMaker. �Eres un administrador o un usuario?");
+            System.out.println("\nBienvenido a FurMaker. ¿Eres un administrador o un usuario?");
             System.out.println(" 0. Salir");
             System.out.println(" 1. Administrador");
             System.out.println(" 2. Usuario");
@@ -56,7 +56,7 @@ public class FursuitMain {
             }
             if (opcion < opcionMinima || opcion > opcionMaxima) {
                 scInt.nextLine();
-                System.out.println("El dato introducido no est� entre las opciones. Por favor, introduzca uno nuevo:");
+                System.out.println("El dato introducido no está entre las opciones. Por favor, introduzca uno nuevo:");
             }
         } while (opcion < opcionMinima || opcion > opcionMaxima);
               
@@ -74,13 +74,13 @@ public class FursuitMain {
             } catch (Exception e) {
                 repetir = true;
                 scInt.nextLine();
-                System.out.println("El dato introducido no est� entre las opciones. Por favor, introduzca uno nuevo:");
+                System.out.println("El dato introducido no está entre las opciones. Por favor, introduzca uno nuevo:");
             }
         } while (repetir);
               
         return opcion;
     }
-    // Si limiteCaracteres = 0,  no hay l�mite de car�cteres
+    // Si limiteCaracteres = 0,  no hay límite de carácteres
     private static String seleccionString(int limiteCaracteres) {
         Scanner scString = new Scanner(System.in);
         String opcion = "";
@@ -92,10 +92,10 @@ public class FursuitMain {
             repetir = false;
             
             if (opcion == "") {
-                System.out.println("No has introducido ning�n dato. Por favor, introduzca algo:");
+                System.out.println("No has introducido ningún dato. Por favor, introduzca algo:");
                 repetir = true;
             } else if (limiteCaracteres != 0 && opcion.length() > limiteCaracteres) {
-                System.out.println("Has superado el l�mite de car�cteres. Por favor, introduzca otra cosa:");
+                System.out.println("Has superado el límite de carácteres. Por favor, introduzca otra cosa:");
                 repetir = true;
             }
         } while (repetir);
@@ -110,13 +110,13 @@ public class FursuitMain {
         do {
             repetir = false;
             EnumMetodoPago metodoPagoActual = null;
-            System.out.println("\nEscriba alguno de los siguientes m�todos: " + metodosPago);
+            System.out.println("\nEscriba alguno de los siguientes métodos: " + metodosPago);
             String metodoPago = seleccionString(0).toUpperCase();
 
             try {
                 metodoPagoActual = EnumMetodoPago.valueOf(metodoPago);
             } catch (Exception e) {
-                System.out.println("El m�todo de pago introducido no existe, por favor, intruduzca uno nuevo:");
+                System.out.println("El método de pago introducido no existe, por favor, intruduzca uno nuevo:");
                 repetir = true;
             }
 
@@ -124,13 +124,13 @@ public class FursuitMain {
                 if (metodosPago.contains(metodoPagoActual)) {
                     metodosPago.remove(metodoPagoActual);
                     metodosPagoUsuario.add(metodoPagoActual);
-                    System.out.println("\nSe ha agregado el m�todo de pago con �xito.");
+                    System.out.println("\nSe ha agregado el método de pago con éxito.");
                 } else {
-                    System.out.println("\nEl m�todo de pago ya fue agregado anteriormente.");
+                    System.out.println("\nEl método de pago ya fue agregado anteriormente.");
                 }
 
                 if (metodosPago.size() != 0) {
-                    System.out.println("�Deseas agregar otro?");
+                    System.out.println("¿Deseas agregar otro?");
                     repetir = seleccionBoolean();
                 } else {
                     repetir = false;
@@ -142,7 +142,7 @@ public class FursuitMain {
         return metodosPagoUsuario;
     }
     private static String convertirBooleanASiONo(boolean dato) {
-        return dato ? "S�" : "No" ;
+        return dato ? "Sí" : "No" ;
     }
 
     private static EnumMetodoPago seleccionMetodoPago() {
@@ -150,13 +150,13 @@ public class FursuitMain {
         EnumMetodoPago metodoPagoActual = null;
 
         do {
-            System.out.println("\nEscriba alguno de los siguientes m�todos: " + metodosPago);
+            System.out.println("\nEscriba alguno de los siguientes métodos: " + metodosPago);
             String metodoPago = seleccionString(0).toUpperCase();
 
             try {
                 metodoPagoActual = EnumMetodoPago.valueOf(metodoPago);
             } catch (Exception e) {
-                    System.out.println("El m�todo de pago introducido no existe, por favor, intruduzca uno nuevo:");
+                    System.out.println("El método de pago introducido no existe, por favor, intruduzca uno nuevo:");
             }
         } while (metodoPagoActual == null);
 
@@ -172,12 +172,12 @@ public class FursuitMain {
             System.out.println("Escriba si o no:");
             String respuesta = seleccionString(2).toLowerCase();
 
-            if (respuesta.equals("si")) {
+            if (respuesta.equals("si") || respuesta.equals("s")) {
                 return true;
-            } else if (respuesta.equals("no")) {
+            } else if (respuesta.equals("no") || respuesta.equals("n")) {
                 return false;
             } else {
-                System.out.println("Lo que has introducido no es una respuesta v�lida. Por favor, introduzca una de las respuestas v�lidas.");
+                System.out.println("Lo que has introducido no es una respuesta válida. Por favor, introduzca una de las respuestas válidas.");
                 repetir = true;
             }
         } while (repetir);
@@ -187,7 +187,7 @@ public class FursuitMain {
 
     private static EnumTamano seleccionTamano() {
         System.out.println("  1. No tiene");
-        System.out.println("  2. Peque�o");
+        System.out.println("  2. Pequeño");
         System.out.println("  3. Mediano");
         System.out.println("  4. Grande");
         int tamano = seleccionInt(1, 4);
@@ -230,7 +230,7 @@ public class FursuitMain {
         int eleccion;
 
         do {
-            System.out.println("\nBienvenido a la sesi�n de administrador. �Qu� desea realizar?");
+            System.out.println("\nBienvenido a la sesión de administrador. ¿Qué desea realizar?");
             System.out.println(" 0. Salir");
             System.out.println(" 1. Crear una cuenta de maker");
             System.out.println(" 2. Revisar cuentas de makers");
@@ -242,7 +242,7 @@ public class FursuitMain {
     
             switch (eleccion) {
                 case 0:
-                    System.out.println("\n Cerrando la sesi�n...");
+                    System.out.println("\n Cerrando la sesión...");
                     break;
     
                 case 1:
@@ -273,11 +273,11 @@ public class FursuitMain {
     }
     
     private static void crearMaker() {
-        System.out.println("\nIntroduzca la informaci�n del nuevo usuario.");
+        System.out.println("\nIntroduzca la información del nuevo usuario.");
         System.out.println(" Nombre:");
         String nombre = seleccionString(0);
         
-        System.out.println("\n Trabajo diario en minutos (1440 m�x):");
+        System.out.println("\n Trabajo diario en minutos (1440 máx.):");
         int minutosTrabajoDiario = seleccionInt(1, 1440);
         
         System.out.println("\n Precio por cabeza de fursuit:");
@@ -286,13 +286,13 @@ public class FursuitMain {
         System.out.println("\n Precio por suit:");
         int precioSuit = seleccionInt(0, Integer.MAX_VALUE);
         
-        System.out.println("\n M�todo de pago:");
+        System.out.println("\n Método de pago:");
         ArrayList<EnumMetodoPago> metodoPagos = seleccionMetodosPago();
         
         Maker maker = new Maker(nombre, minutosTrabajoDiario, precioHead, precioSuit, metodoPagos);
         makers.add(maker);
         
-        System.out.println("\nCuenta de maker creada con �xito.");
+        System.out.println("\nCuenta de maker creada con éxito.");
     }
 
     private static void revisarMakers() {
@@ -304,24 +304,24 @@ public class FursuitMain {
                 System.out.println("\n--------------------------------------------------\n");
                 System.out.println(makers.get(i).getNombre() + ":");
                 System.out.println(" [ Trabajo diario: " + makers.get(i).getMinutosTrabajoDiario() + " min ]");
-                System.out.println(" [ M�todos de pago: " + makers.get(i).getMetodoPagos() + " ]");
+                System.out.println(" [ Métodos de pago: " + makers.get(i).getMetodoPagos() + " ]");
                 System.out.println(" [ Precio por head: " + makers.get(i).getPrecioHead() + " EUR ]");
                 System.out.println(" [ Precio por suit: " + makers.get(i).getPrecioSuit() + " EUR ]");
                 if (makers.get(i).getPedido() != null) {
-                    System.out.println(" [ Pedido asignado: ID N�" + makers.get(i).getPedido().getId() + " - Nombre de cliente: " + makers.get(i).getPedido().getNombreCliente() + " ]");
+                    System.out.println(" [ Pedido asignado: ID Nº" + makers.get(i).getPedido().getId() + " - Nombre de cliente: " + makers.get(i).getPedido().getNombreCliente() + " ]");
                 } else {
                     System.out.println(" [ Pedido asignado: Ninguno ]");
                 }
             }
             System.out.println("\n--------------------------------------------------\n");
         } else {
-            System.out.println("Actualmente no hay ning�n maker creado. Por favor, cree alguno antes de continuar.");
+            System.out.println("Actualmente no hay ningún maker creado. Por favor, cree alguno antes de continuar.");
         }
     }
 
     private static void eliminarMaker() {
         if (makers != null && !makers.isEmpty()) {
-            System.out.println("\n�Qu� cuenta de maker deseas eliminar?");
+            System.out.println("\n¿Qué cuenta de maker deseas eliminar?");
             System.out.println(" 0. Salir");
             
             for (int i = 0; i < makers.size(); i++) {
@@ -332,10 +332,10 @@ public class FursuitMain {
             
             if (seleccion > 0) {
                 makers.remove(seleccion - 1);
-                System.out.println("\n Maker eliminado con �xito.");
+                System.out.println("\n Maker eliminado con éxito.");
             }
         } else {
-            System.out.println("\nA�n no se ha creado ninguna cuenta de maker. Por favor, cree una antes de continuar.");
+            System.out.println("\nAún no se ha creado ninguna cuenta de maker. Por favor, cree una antes de continuar.");
         }
     }
     
@@ -347,19 +347,19 @@ public class FursuitMain {
             for (int i = 0; i < pedidos.size(); i++) {
                 makerAsignado = makerAsignado(pedidos.get(i));
                 System.out.println("\n--------------------------------------------------\n");
-                System.out.println("Pedido ID N�" + pedidos.get(i).getId());
+                System.out.println("Pedido ID Nº" + pedidos.get(i).getId());
                 System.out.println(" [ Nombre del cliente: " + pedidos.get(i).getNombreCliente() + " ]");
-                System.out.println(" [ Direcci�n del cliente: " + pedidos.get(i).getDireccion() + " ]");
-                System.out.println(" [ Fecha de realizaci�n del pedido: " + pedidos.get(i).getFechaPedido() + " ]");
+                System.out.println(" [ Dirección del cliente: " + pedidos.get(i).getDireccion() + " ]");
+                System.out.println(" [ Fecha de realización del pedido: " + pedidos.get(i).getFechaPedido() + " ]");
                 System.out.println(" [ Estado del pedido: " + pedidos.get(i).getEstadoPedido() + " ]");
                 if (makerAsignado != null) {
                     System.out.println(" [ Maker asignado: " + makerAsignado.getNombre() + " - " + makerAsignado.getMinutosTrabajoDiario() + "min ]");
                     if (pedidos.get(i).getFechaInicioMaker() != null) {
                         System.out.println(" [ Fecha de inicio del fursuit: " + pedidos.get(i).getFechaInicioMaker() + " ]");
                         if (pedidos.get(i).getFechaFinalizacionMaker() != null) {
-                            System.out.println(" [ Fecha de finalizaci�n del fursuit: " + pedidos.get(i).getFechaFinalizacionMaker() + " ]");
+                            System.out.println(" [ Fecha de finalización del fursuit: " + pedidos.get(i).getFechaFinalizacionMaker() + " ]");
                         } else {
-                            System.out.println(" [ Fecha aproximada de finalizaci�n del fursuit: " + pedidos.get(i).getFechaAproximadaFinalizacionPedido(makerAsignado));
+                            System.out.println(" [ Fecha aproximada de finalización del fursuit: " + pedidos.get(i).getFechaAproximadaFinalizacionPedido(makerAsignado));
                         }
                     } else {
                         System.out.println(" [ Fecha de inicio del fursuit: No hay ]");
@@ -369,9 +369,9 @@ public class FursuitMain {
                     System.out.println(" [ Fecha de inicio del fursuit: No hay ]");
                 }
                 
-                System.out.println(" [ M�todo de pago utilizado: " + pedidos.get(i).getMetodoPago() + " ]");
+                System.out.println(" [ Método de pago utilizado: " + pedidos.get(i).getMetodoPago() + " ]");
                 for (Fursuit fursuit : pedidos.get(i).getFursuits()) {
-                    System.out.println(" [ INFORMACI�N DE LOS FURSUITS ]"); 
+                    System.out.println(" [ INFORMACIÓN DE LOS FURSUITS ]"); 
                     System.out.println("\tRaza: " + fursuit.getRaza());
                     if (fursuit instanceof FursuitHead) {
                         FursuitHead fursuitHead = (FursuitHead) fursuit;
@@ -390,7 +390,7 @@ public class FursuitMain {
             }
             System.out.println("\n--------------------------------------------------\n");
         } else {
-            System.out.println("Actualmente no hay ning�n pedido creado. No querr�s uno t�, �verdad?");
+            System.out.println("Actualmente no hay ningún pedido creado. No querrás uno tú, ¿verdad? 7w7");
         }
 
         
@@ -407,9 +407,9 @@ public class FursuitMain {
 
     private static void asignarPedidoAMaker() {
         if (makers == null || makers.isEmpty()) {
-            System.out.println("A�n no se ha creado ning�n maker. Por favor, cree uno para poder continuar.");
+            System.out.println("Aún no se ha creado ningún maker. Por favor, cree uno para poder continuar.");
         } else if (pedidos == null || pedidos.isEmpty()) {
-            System.out.println("A�n no hay ning�n pedido creado. No querr�s uno t�, �verdad?");
+            System.out.println("Aún no hay ningún pedido creado. No querrás uno tú, ¿verdad? 7w7");
         } else {
             boolean makerDisponible = false;
 
@@ -437,14 +437,14 @@ public class FursuitMain {
             }
 
             if (!makerDisponible) {
-                System.out.println("No hay ning�n maker con pedidos disponibles.");
+                System.out.println("No hay ningún maker con pedidos disponibles.");
             } else if (posicionesPedido.isEmpty()) {
-                System.out.println("No hay ning�n pedido disponible para ser asignado.");
+                System.out.println("No hay ningún pedido disponible para ser asignado.");
             } else {
                 System.out.println("Elija uno de los siguientes pedidos para ser asignados:");
                 System.out.println(" 0. Salir");
                 for (int i = 1; i <= posicionesPedido.size(); i++) {
-                    System.out.println(" " + i + ". ID N�" + pedidos.get(posicionesPedido.get(i)).getId() + " [ Nombre cliente: " + pedidos.get(posicionesPedido.get(i)).getNombreCliente() + " ]");
+                    System.out.println(" " + i + ". ID Nº" + pedidos.get(posicionesPedido.get(i)).getId() + " [ Nombre cliente: " + pedidos.get(posicionesPedido.get(i)).getNombreCliente() + " ]");
                 }
                 
                 int seleccionPedido = seleccionInt(0, posicionesPedido.size());
@@ -465,13 +465,13 @@ public class FursuitMain {
                     int seleccionMaker = seleccionInt(0, posicionesMaker.size());
                     if (seleccionMaker > 0) {
                         for (Fursuit fursuit : pedidos.get(posicionesPedido.get(seleccionPedido)).getFursuits()) {
-                            System.out.println("�Cu�nto tiempo (en minutos) te vas a tirar con el siguiente fursuit?");
+                            System.out.println("¿Cuánto tiempo (en minutos) te vas a tirar con el siguiente fursuit?");
                             if (fursuit instanceof FursuitHead) {
                                 FursuitHead fursuitHead = (FursuitHead) fursuit;
                                 System.out.println(
                                     " Raza: " + fursuitHead.getRaza()
-                                    + " - Tama�o de las orejas:" + fursuitHead.getTamanoOrejas()
-                                    + " - Tama�o de los cuernos: " + fursuitHead.getTamanoCuernos()
+                                    + " - Tamaño de las orejas:" + fursuitHead.getTamanoOrejas()
+                                    + " - Tamaño de los cuernos: " + fursuitHead.getTamanoCuernos()
                                     + " - Ventilador: " + fursuitHead.isVentilador()
                                     + "\n - Comentario: " + fursuitHead.getComentario()
                                 );
@@ -480,7 +480,7 @@ public class FursuitMain {
                                 FursuitSuit fursuitSuit = (FursuitSuit) fursuit;
                                 System.out.println(
                                     " Raza: " + fursuitSuit.getRaza()
-                                    + " - Tama�o de la cola: " + fursuitSuit.getTamanoCola()
+                                    + " - Tamaño de la cola: " + fursuitSuit.getTamanoCola()
                                     + " - Tipo de patas: " + fursuitSuit.getTipoPatas()
                                     + "\n - Comentario: " + fursuitSuit.getComentario()
                                 );
@@ -489,7 +489,7 @@ public class FursuitMain {
                         }
 
                         makers.get(posicionesMaker.get(seleccionMaker)).setPedido(pedidos.get(posicionesPedido.get(seleccionPedido)));
-                        System.out.println("\n Pedido asignado con �xito.");
+                        System.out.println("\n Pedido asignado con éxito.");
                     }
                 }
             }
@@ -498,7 +498,7 @@ public class FursuitMain {
 
     private static void modificarPedidoAdmin() {
         if (pedidos == null || pedidos.isEmpty()) {
-            System.out.println("Actualmente no hay ning�n pedido creado. No querr�s uno t�, �verdad?");
+            System.out.println("Actualmente no hay ningún pedido creado. No querrás uno tú, ¿verdad? 7w7");
         } else {
             HashMap<Integer, Integer> posicionesPedido = new HashMap<Integer, Integer>();
             int posicionPedido = 1;
@@ -511,13 +511,13 @@ public class FursuitMain {
             }
             
             if (posicionesPedido.isEmpty()) {
-                System.out.println("Todos los pedidos actuales est�n terminados.");
+                System.out.println("Todos los pedidos actuales están terminados.");
             } else {
-                System.out.println("�Qu� pedido deseas modificar?");
+                System.out.println("¿Qué pedido deseas modificar?");
                 System.out.println(" 0. Salir");
                 for (int i = 1; i <= posicionesPedido.size(); i++) {
                     System.out.println(
-                        " " + i + ". ID N�" + pedidos.get(posicionesPedido.get(i)).getId() 
+                        " " + i + ". ID Nº" + pedidos.get(posicionesPedido.get(i)).getId() 
                         + " [ Nombre cliente: " + pedidos.get(posicionesPedido.get(i)).getNombreCliente() 
                         + " - Estado del pedido: " + pedidos.get(posicionesPedido.get(i)).getEstadoPedido() +  " ]"
                     );
@@ -529,10 +529,10 @@ public class FursuitMain {
 
                     if (pedidos.get(posicionesPedido.get(indiceSeleccionPedido)).getEstadoPedido() == "No empezado") {
                         pedidos.get(posicionesPedido.get(indiceSeleccionPedido)).setFechaInicioMaker(LocalDate.now());
-                        System.out.println("\n Fecha de inicio establecida con �xito.");
+                        System.out.println("\n Fecha de inicio establecida con éxito.");
                     } else {
                         pedidos.get(posicionesPedido.get(indiceSeleccionPedido)).setFechaFinalizacionMaker(LocalDate.now());
-                        System.out.println("\n Fecha de finalizaci�n establecida con �xito.");
+                        System.out.println("\n Fecha de finalización establecida con éxito.");
                     }
                 }
             }
@@ -544,7 +544,7 @@ public class FursuitMain {
         int eleccion;
         
         do {
-            System.out.println("\nBienvenido a la sesi�n de usuario. �Qu� desea realizar?");
+            System.out.println("\nBienvenido a la sesión de usuario. ¿Qué desea realizar?");
             System.out.println(" 0. Salir");
             System.out.println(" 1. Realizar un pedido");
             System.out.println(" 2. Eliminar un pedido");
@@ -552,7 +552,7 @@ public class FursuitMain {
             
             switch (eleccion) {
                 case 0:
-                    System.out.println("\n Cerrando la sesi�n...");
+                    System.out.println("\n Cerrando la sesión...");
                     break;
                 
                 case 1:
@@ -574,18 +574,18 @@ public class FursuitMain {
         System.out.println("\n Nombre del cliente:");
         String nombre = seleccionString(0);
 
-        System.out.println("\n Direcci�n del cliente:");
+        System.out.println("\n Dirección del cliente:");
         String direccion = seleccionString(0);
 
-        System.out.println("\n M�todo de pago:");
+        System.out.println("\n Método de pago:");
         EnumMetodoPago metodoPago = seleccionMetodoPago();
 
         System.out.println("\nRellena el siguiente formulario sobre tu/s fursuit/s.");
-        System.out.println("\n �Quieres crear heads?:");
+        System.out.println("\n ¿Quieres crear heads?:");
         boolean crearHeads = seleccionBoolean();
         if (crearHeads) {
             fursuits.addAll(crearFursuitHeads());
-            System.out.println("\n �Quieres crear suits?:");
+            System.out.println("\n ¿Quieres crear suits?:");
             boolean crearSuits = seleccionBoolean();
             if (crearSuits) {
                 fursuits.addAll(crearFursuitSuits());
@@ -596,7 +596,7 @@ public class FursuitMain {
         }
 
         pedidos.add(new Pedido(nombre, direccion, metodoPago, fursuits));
-        System.out.println("Pedido realizado con �xito. :D");
+        System.out.println("Pedido realizado con éxito. :D");
     }
     private static ArrayList<FursuitHead> crearFursuitHeads() {
         ArrayList<FursuitHead> fursuitHeads = new ArrayList<FursuitHead>();
@@ -620,19 +620,19 @@ public class FursuitMain {
             System.out.println("\n Escriba el color del ojo derecho");
             String colorOjoDerecho = seleccionString(0);
             
-            System.out.println("\n Ingrese el tama�o de las orejas:");
+            System.out.println("\n Ingrese el tamaño de las orejas:");
             EnumTamano tamanoOrejas = seleccionTamano();
             
-            System.out.println("\n Ingrese el tama�o de los cuernos:");
+            System.out.println("\n Ingrese el tamaño de los cuernos:");
             EnumTamano tamanoCuernos = seleccionTamano();
 
-            System.out.println("\n �Quieres un ventilador?");
+            System.out.println("\n ¿Quieres un ventilador?");
             boolean ventilador = seleccionBoolean();
 
             System.out.println("\n Comentario:");
             String comentario = seleccionString(0);
             
-            System.out.println("�Deseas agregar otro?");
+            System.out.println("¿Deseas agregar otro?");
             repetir = seleccionBoolean();
 
             FursuitHead fursuitHead = new FursuitHead(raza, colorPrincipal, colorSecundario, comentario, colorOjoDerecho, colorOjoIzquierdo, tamanoOrejas, tamanoCuernos, ventilador);
@@ -658,7 +658,7 @@ public class FursuitMain {
             System.out.println("\n Escriba el color secundario:");
             String colorSecundario = seleccionString(0);
 
-            System.out.println("\n �Tiene garras?:");
+            System.out.println("\n ¿Tiene garras?:");
             boolean garras = seleccionBoolean();
 
             System.out.println("\n Elija el tipo de patas:");
@@ -667,13 +667,13 @@ public class FursuitMain {
             System.out.println("\n Escriba el color de los beans:");
             String colorBeands = seleccionString(0);
 
-            System.out.println("\n Ingrese el tama�o de la cola:");
+            System.out.println("\n Ingrese el tamaño de la cola:");
             EnumTamano tamanoCola = seleccionTamano();
 
             System.out.println("\n Comentario:");
             String comentario = seleccionString(0);
             
-            System.out.println("�Deseas agregar otro?");
+            System.out.println("¿Deseas agregar otro?");
             repetir = seleccionBoolean();
 
             FursuitSuit fursuitSuit = new FursuitSuit(raza, colorPrincipal, colorSecundario, comentario, garras, tipoPatas, colorBeands, tamanoCola);
@@ -685,7 +685,7 @@ public class FursuitMain {
 
     private static void eliminarPedido() {
         if (pedidos == null || pedidos.isEmpty()) {
-            System.out.println("Actualmente no hay ning�n pedido creado. No querr�s uno t�, �verdad?");
+            System.out.println("Actualmente no hay ningún pedido creado. No querrás uno tú, ¿verdad? 7w7");
         } else {
             HashMap<Integer, Integer> posicionesPedido = new HashMap<Integer, Integer>();
             int posicionPedido = 1;
@@ -698,18 +698,18 @@ public class FursuitMain {
             }
 
             if (posicionesPedido == null || posicionesPedido.isEmpty()) {
-                System.out.println("Todos los pedidos disponibles ya se est�n creando o ya fueron creados.");
+                System.out.println("Todos los pedidos disponibles ya se están creando o ya fueron creados.");
             } else {
-                System.out.println("�Qu� pedido deseas eliminar?");
+                System.out.println("¿Qué pedido deseas eliminar?");
                 System.out.println(" 0. Salir");
                 for (int i = 1; i <= posicionesPedido.size(); i++) {
-                    System.out.println(" " + i + ". ID N�" + pedidos.get(posicionesPedido.get(i)).getId() + " [ Nombre cliente: " + pedidos.get(posicionesPedido.get(i)).getNombreCliente() + " ]");
+                    System.out.println(" " + i + ". ID Nº" + pedidos.get(posicionesPedido.get(i)).getId() + " [ Nombre cliente: " + pedidos.get(posicionesPedido.get(i)).getNombreCliente() + " ]");
                 }
     
                 int seleccionPedido = seleccionInt(0, posicionesPedido.size());
                 if (seleccionPedido > 0) {
                     pedidos.remove(pedidos.get(posicionesPedido.get(seleccionPedido)));
-                    System.out.println("\n Pedido eliminado con �xito.");
+                    System.out.println("\n Pedido eliminado con éxito.");
                 }
             }
         }
